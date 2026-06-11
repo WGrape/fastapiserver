@@ -29,7 +29,7 @@ jwt:
 # DATABASE - 数据库配置
 # =============================================================================
 database:
-  url: "mysql+aiomysql://user:password@prod-host:3306/fastapiserver"
+  url: "mysql+aiomysql://user:password@prod-host:3306/test_database"
 
 # =============================================================================
 # REDIS - 缓存配置

@@ -101,7 +101,7 @@ class JWTConfig:
 @dataclass
 class DatabaseConfig:
     """数据库配置"""
-    # mysql+aiomysql://user:password@localhost:3306/database
+    # mysql+aiomysql://user:password@localhost:3306/test_database
     url: str = ""
 
 

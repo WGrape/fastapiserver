@@ -2,6 +2,6 @@
 
 case "$APP_NAME" in
     *)
-        exec gunicorn src.cmd.main:app -c gunicorn_config.py
+        exec gunicorn src.cmd.main:app -c deploy/gunicorn_config.py
         ;;
 esac
