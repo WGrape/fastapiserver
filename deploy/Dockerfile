@@ -20,17 +20,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 复制应用代码
-COPY src/ ./src/
-COPY alembic/ ./alembic/
-COPY alembic.ini .
-COPY deploy/gunicorn_config.py .
+COPY . /app/
 
 # 复制对应环境的启动脚本
 COPY deploy/${ENVIRONMENT}/start.sh /app/start.sh
 RUN chmod +x /app/start.sh
-
-# 暴露端口（仅作文档说明）
-EXPOSE 8000
 
 # 使用启动脚本启动
 ENTRYPOINT ["/app/start.sh"]

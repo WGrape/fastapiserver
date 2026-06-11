@@ -48,8 +48,12 @@ max_requests = int(os.getenv('MAX_REQUESTS', '10000'))
 # 最大请求随机抖动 - 给 max_requests 添加随机值，避免所有 worker 同时重启
 max_requests_jitter = int(os.getenv('MAX_REQUESTS_JITTER', '1000'))
 
-# Worker 临时目录 - Uvicorn 特定配置，使用共享内存提升性能
-worker_tmp_dir = "/dev/shm"
+# Worker 临时目录 - Uvicorn 特定配置，使用共享内存提升性能，Linux 用 /dev/shm，macOS 用 /tmp
+# 自动检测系统可用的临时目录
+if os.path.exists('/dev/shm'):
+    worker_tmp_dir = os.getenv('WORKER_TMP_DIR', '/dev/shm')
+else:
+    worker_tmp_dir = os.getenv('WORKER_TMP_DIR', '/tmp')
 
 
 def when_ready(server):
