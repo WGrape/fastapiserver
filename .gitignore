@@ -65,3 +65,6 @@ dmypy.json
 *.tmp
 .workbuddy/
 .claude/
+
+
+.DS_Store

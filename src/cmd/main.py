@@ -63,6 +63,17 @@ async def health_check():
     return {"status": "healthy"}
 
 
+@app.get("/ping")
+async def ping():
+    """Ping 接口"""
+    import time
+    return {
+        "message": "pong",
+        "timestamp": int(time.time()),
+        "status": "ok"
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
